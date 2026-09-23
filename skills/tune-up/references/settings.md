@@ -6,7 +6,7 @@ Read `~/.claude/settings.json` (and the project's `.claude/settings.json` if any
 |---|---|---|
 | `env.CLAUDE_CODE_AUTO_COMPACT_WINDOW` | `"400000"` on 1M-context models | Every turn resends the whole conversation. Summarizing at 400k instead of near 1M keeps long sessions much cheaper, and quality drops in very long contexts anyway. Per-session: `claude --autocompact 400k`. |
 | `effortLevel` | Leave at the model default (`medium` on Opus 5.5) unless they set it higher for everything | Higher effort thinks longer on every turn. Raise it per task with `/effort high` when a task is hard. |
-| `autoMemoryEnabled` | Their choice. If on, the tune-up audits the memory folder | Memory loads at every session start. Useful for people who don't maintain `CLAUDE.md`; it drifts stale without review. |
+| `autoMemoryEnabled` | Their choice, after the memory review in [instructions](instructions.md) §Auto memory. `false` turns it off everywhere; set it in a project's `.claude/settings.json` to turn it off for one project | Memory loads every session and is hidden, machine-local, and prone to stale or conflicting notes; it is also how corrections get remembered for people who don't edit `CLAUDE.md`. |
 | Plugins in `enabledPlugins` | Turn off plugins they don't use | Each enabled plugin adds skills to the list every turn. |
 | MCP servers | Remove servers they don't use | Tool search defers most tool detail, but each server still adds names and startup time. |
 

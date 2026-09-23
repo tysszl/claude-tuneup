@@ -13,11 +13,24 @@
 
 ## Shape of a good CLAUDE.md
 
-A few short paragraphs or sections: purpose and audience, key facts and preferences, where things live, how to do the common tasks (or which skill does them), and hard boundaries. Often under 3 KB for a personal project. Length is not the goal; a file that is long because it holds true, needed facts is fine.
+A brief statement of purpose and audience, then most of the words on what would trip up a capable newcomer: gotchas, non-obvious facts and preferences, where things live, which skill handles which task, and hard boundaries. Stay well under 200 lines; for a personal project, often under 3 KB. Length is not the goal; a file that is long because it holds true, needed facts is fine.
 
-## Memory
+Guidance that applies only to certain files can move to `.claude/rules/<topic>.md` with a `paths:` list in its frontmatter (for example `paths: ["invoices/**"]`), so it loads only when Claude works on matching files. Rules files without `paths:`, and files using other tools' keys such as `globs:`, load every session. Check the current format at https://code.claude.com/docs/en/memory before writing one.
 
-If auto-memory is on, notes accumulate in `~/.claude/projects/<project-path>/memory/`. The index loads every session. Remove notes that are wrong, duplicated in `CLAUDE.md`, or about finished work. Promote a note that is a durable project fact into `CLAUDE.md` and delete the note. Tell the person whether auto-memory is on; see [settings](settings.md).
+Instructions are guidance, not enforcement. If something must never happen (deleting a folder, sending from an account), tell the person a hook can block it outright, and offer to set one up.
+
+## Auto memory
+
+Auto memory is on by default. Claude saves notes about the person, their corrections, ongoing work, and where to find things in `~/.claude/projects/<project>/memory/`, and the `MEMORY.md` index loads every session (up to 200 lines). Current versions skip what the code or `CLAUDE.md` already says and prompt Claude to prune the index, so it is much less bloated than it once was. Its remaining weaknesses:
+
+- **Invisible.** Most people never read it, so wrong or outdated notes persist unnoticed.
+- **Stale work notes.** Notes about deadlines and in-progress work outlive the work.
+- **Conflicts.** When `CLAUDE.md` changes, older notes can contradict it, and Claude cannot tell which wins.
+- **One computer only.** Not in the project folder, not in Git, not backed up, and not seen on another machine or by a collaborator.
+
+Review it every tune-up. For each note: move durable facts and preferences into `CLAUDE.md` (or a skill, if task-specific) and delete the note; delete notes that are wrong, finished, or already covered; leave current work notes. Report what moved and what was deleted.
+
+Then ask whether they want to keep it on. Recommend keeping it on for someone who rarely edits `CLAUDE.md` themselves, since it is how their corrections get remembered, with a tune-up every few months to move the good parts into `CLAUDE.md`. Recommend turning it off for someone who prefers to say "add this to CLAUDE.md" when something should stick. Either is reasonable; see [settings](settings.md).
 
 ## Other files it loads
 

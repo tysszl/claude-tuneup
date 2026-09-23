@@ -54,6 +54,17 @@ The tune-up will offer these, but you can set them yourself. Open `~/.claude/set
 
 This makes Claude summarize a long conversation at 400,000 tokens instead of waiting until nearly 1 million. Every message resends the whole conversation, so a huge conversation gets expensive fast, and Claude works better with less clutter anyway.
 
+## Auto memory
+
+Claude Code keeps its own notes about you and each project ("auto memory") and reads them at the start of every session. That's how it remembers corrections you gave it last week. The catch: you never see those notes, so wrong or outdated ones stick around; they can contradict your `CLAUDE.md`; and they live only on your computer, outside your project folder and its backups.
+
+Each tune-up reads those notes, moves the ones worth keeping into your `CLAUDE.md` where you can see them, and deletes the rest. It then asks whether you want auto memory on or off:
+
+- **Keep it on** if you rarely edit `CLAUDE.md` yourself. Run a tune-up every few months to clean it up.
+- **Turn it off** if you'd rather say "add this to CLAUDE.md" whenever you want Claude to remember something. Your notes then all live in one place you can read.
+
+You can check what it has saved anytime with `/memory`.
+
 ## Habits that save usage
 
 - **One task per session.** When you switch to something unrelated, type `/clear`. Long sessions make every message cost more.
