@@ -26,11 +26,12 @@ Later, to tune up a project, open Claude Code in that project's folder and type 
 
 The person who sent you here is probably not a programmer. Run the commands yourself instead of asking them to, explain what you are doing in plain words, and ask before changing anything.
 
-1. **Install.** Run `claude plugin marketplace add tysszl/claude-tuneup`, then `claude plugin install tune-up@tyler-tune-up`. If `claude` is not on the PATH, have them type `/plugin marketplace add tysszl/claude-tuneup` and then `/plugin install tune-up@tyler-tune-up` themselves. Offer to turn on auto-update for the `tyler-tune-up` marketplace (in `/plugin`, under marketplaces) so improvements reach them.
-2. **Load it now.** The `/tune-up` command appears only after Claude Code restarts. To start without a restart, read `skills/tune-up/SKILL.md` from the installed copy (`claude plugin details tune-up@tyler-tune-up` shows where it is, usually under `~/.claude/plugins/`) or from this repository, and follow it, reading its `references/` files as it directs.
-3. **Find their projects.** Look for folders with a `CLAUDE.md`, `AGENTS.md`, or `.claude/` folder in the current folder and the usual places (home folder, `~/Documents`, `~/Desktop`, `~/Projects`, `~/code`). Show them a short list with the last time each was changed, and suggest an order: their global setup (`~/.claude/`) first, since it affects every project, then the projects they use most.
-4. **One at a time.** Tune up the first one now. For each next one, suggest a fresh session: quit, open Claude Code in that project's folder, and type `/tune-up`. A fresh session per project keeps each run accurate and cheaper.
-5. **Settings.** When the tune-up reaches settings, walk them through the recommendations in `skills/tune-up/references/settings.md`, one plain sentence each, and change only what they approve.
+1. **Install.** Run `claude plugin marketplace add tysszl/claude-tuneup`, then `claude plugin install tune-up@tyler-tune-up`. If you cannot run `claude` from the shell, have them type `/plugin install tune-up --marketplace tysszl/claude-tuneup` themselves; installing from `/plugin` activates it in the current session. In the desktop app or VS Code, use the plugin browser instead.
+2. **Activate it.** A plugin installed from the shell loads when they type `/reload-plugins` or start a new session. Ask them to type `/reload-plugins`; it keeps the conversation and makes `/tune-up` available. If they would rather not, read `skills/tune-up/SKILL.md` from the installed copy (`claude plugin details tune-up@tyler-tune-up` shows where it is) or from this repository and follow it, reading its `references/` files as it directs.
+3. **Updates.** Auto-update is off by default for marketplaces like this one. Offer to turn it on: in `/plugin`, go to **Marketplaces**, choose `tyler-tune-up`, and select **Enable auto-update**. Updates then download in the background and load on their next session.
+4. **Find their projects.** Look for folders with a `CLAUDE.md`, `AGENTS.md`, or `.claude/` folder in the current folder and the usual places (home folder, `~/Documents`, `~/Desktop`, `~/Projects`, `~/code`). Show them a short list with the last time each was changed, and suggest an order: their global setup (`~/.claude/`) first, since it affects every project, then the projects they use most.
+5. **One at a time.** Tune up the first one now. For each next one, suggest a fresh session: quit, open Claude Code in that project's folder, and type `/tune-up`. A fresh session per project keeps each run accurate and cheaper.
+6. **Settings.** When the tune-up reaches settings, walk them through the recommendations in `skills/tune-up/references/settings.md`, one plain sentence each, and change only what they approve.
 
 ## Settings that save usage
 
@@ -60,7 +61,7 @@ You can check what it has saved anytime with `/memory`.
 ## Habits that save usage
 
 - **One task per session.** When you switch to something unrelated, type `/clear`. Long sessions make every message cost more.
-- **Don't switch models or turn plugins on and off mid-session.** Claude Code reuses the unchanged part of the conversation at a discount, for about an hour. Switching models or tools throws that discount away.
+- **Don't switch models or connectors mid-session.** Claude Code reuses the unchanged part of the conversation at a discount, for about an hour. Switching models, or turning on and off plugins that connect to outside services, throws that discount away. Plugins that only add skills, like this one, are fine to add mid-session.
 - **Back after more than an hour?** The discount has expired. If the session was long, ask Claude for a short summary of where things stand, type `/clear`, and paste the summary in.
 - **Raise effort only when needed.** `/effort high` for a hard problem; the default is fine for most work.
 - **Look before guessing.** `/context` shows what's filling Claude's memory, `/usage` shows how much you're using, and `/skill-doctor` shows which skills you never use.
