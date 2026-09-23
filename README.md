@@ -10,35 +10,27 @@ Setups also go stale. Notes like "we used to do X, now we do Y", finished plans,
 
 A tune-up keeps what matters (your facts, preferences, and real rules) and removes the rest.
 
-## Install (once)
+## Start here
 
-In Claude Code, type:
-
-```
-/plugin marketplace add tysszl/claude-tuneup
-/plugin install tune-up@tyler-tune-up
-```
-
-Then restart Claude Code.
-
-## Use
-
-Open Claude Code in a project folder and type:
+Open Claude Code (any folder is fine) and paste this:
 
 ```
-/tune-up
+I want to run the tune-up from https://github.com/tysszl/claude-tuneup on my projects. Please install it and walk me through it.
 ```
 
-You can also say what you want:
+Claude takes it from there. It installs the kit, finds your projects, and goes through them with you one at a time. Nothing in your files changes until you say yes, and everything is backed up first. Use Claude Opus 5.5 for this (type `/model opus` first); the judgment calls are the point.
 
-- `/tune-up my global setup` — your personal `CLAUDE.md`, skills, and settings used in every project
-- `/tune-up the invoice skill` — one skill
+Later, to tune up a project, open Claude Code in that project's folder and type `/tune-up`. You can also say what you want: `/tune-up my global setup` (your personal settings used everywhere) or `/tune-up the invoice skill`. Run it on each project once, then again every few months or after a new model comes out.
 
-Claude will inventory the setup, check it against the real project, and give you a short list of proposed changes. Nothing changes until you say yes. Before editing, it saves a backup (a Git commit, or a copy in `~/.claude/tune-up-backups/`) and tells you how to undo. Afterward, start a new session so the changes load.
+## For Claude: setting someone up
 
-Run it on each project once, then again every few months or after a new model comes out.
+The person who sent you here is probably not a programmer. Run the commands yourself instead of asking them to, explain what you are doing in plain words, and ask before changing anything.
 
-Use Claude Opus 5.5 for this (`/model opus`); the judgment calls are the point.
+1. **Install.** Run `claude plugin marketplace add tysszl/claude-tuneup`, then `claude plugin install tune-up@tyler-tune-up`. If `claude` is not on the PATH, have them type `/plugin marketplace add tysszl/claude-tuneup` and then `/plugin install tune-up@tyler-tune-up` themselves. Offer to turn on auto-update for the `tyler-tune-up` marketplace (in `/plugin`, under marketplaces) so improvements reach them.
+2. **Load it now.** The `/tune-up` command appears only after Claude Code restarts. To start without a restart, read `skills/tune-up/SKILL.md` from the installed copy (`claude plugin details tune-up@tyler-tune-up` shows where it is, usually under `~/.claude/plugins/`) or from this repository, and follow it, reading its `references/` files as it directs.
+3. **Find their projects.** Look for folders with a `CLAUDE.md`, `AGENTS.md`, or `.claude/` folder in the current folder and the usual places (home folder, `~/Documents`, `~/Desktop`, `~/Projects`, `~/code`). Show them a short list with the last time each was changed, and suggest an order: their global setup (`~/.claude/`) first, since it affects every project, then the projects they use most.
+4. **One at a time.** Tune up the first one now. For each next one, suggest a fresh session: quit, open Claude Code in that project's folder, and type `/tune-up`. A fresh session per project keeps each run accurate and cheaper.
+5. **Settings.** When the tune-up reaches settings, walk them through the recommendations in `skills/tune-up/references/settings.md`, one plain sentence each, and change only what they approve.
 
 ## Settings that save usage
 

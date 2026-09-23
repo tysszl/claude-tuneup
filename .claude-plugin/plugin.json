@@ -1,6 +1,10 @@
 {
   "name": "tune-up",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Audit and refactor CLAUDE.md files, skills, and settings for current Claude models.",
-  "author": { "name": "Tyler Simmons" }
+  "author": {
+    "name": "Tyler Simmons"
+  },
+  "repository": "https://github.com/tysszl/claude-tuneup",
+  "license": "MIT"
 }
