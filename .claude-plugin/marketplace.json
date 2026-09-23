@@ -1,0 +1,12 @@
+{
+  "name": "tyler-tune-up",
+  "description": "Tyler's Claude Code tune-up kit.",
+  "owner": { "name": "Tyler Simmons" },
+  "plugins": [
+    {
+      "name": "tune-up",
+      "description": "Audit and refactor CLAUDE.md files, skills, and settings for current Claude models.",
+      "source": "./"
+    }
+  ]
+}
