@@ -1,6 +1,6 @@
 ---
 name: tune-up
-description: Audit and refactor a project's CLAUDE.md, skills, and Claude Code settings for accuracy, clarity, and lower usage; use when asked to tune up, clean up, or audit a setup.
+description: Audit and refactor CLAUDE.md, skills, and settings for accuracy, clarity, and lower usage; use to tune up or clean up a Claude Code setup.
 ---
 
 # Tune-up
