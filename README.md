@@ -1,5 +1,7 @@
 # Claude Code tune-up
 
+**Archived 2026-11-19.** No longer maintained.
+
 A kit for cleaning up your Claude Code setup. It gives you one command, `/tune-up`, that has Claude review your `CLAUDE.md` files and skills, tell you in plain words what it would change, back everything up, and make the changes you approve.
 
 ## Why bother
